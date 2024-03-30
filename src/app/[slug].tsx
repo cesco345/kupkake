@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useLocalSearchParams } from "expo-router";
 import { getPost, getAllPosts } from "../repository/postRepository";
 import Markdown from "react-native-markdown-display";
+import Head from "expo-router/head";
 
 export async function generateStaticParams(): Promise<
   Record<string, string>[]
@@ -21,22 +22,28 @@ const PostDetailsPage = () => {
     return <Text>Post not found</Text>;
   }
   return (
-    <ScrollView
-      style={{
-        flex: 1,
-        backgroundColor: "white",
-      }}
-      contentContainerStyle={{
-        gap: 24,
-        padding: 24,
-        width: "100%",
-        maxWidth: 960,
-        marginHorizontal: "auto",
-      }}
-    >
-      <Text style={{ fontSize: 30, marginBottom: 20 }}>{post.title}</Text>
-      <Markdown>{post.content}</Markdown>
-    </ScrollView>
+    <>
+      <Head>
+        <title>{post.title}</title>
+        <meta name="description" content={post.description} />
+      </Head>
+      <ScrollView
+        style={{
+          flex: 1,
+          backgroundColor: "white",
+        }}
+        contentContainerStyle={{
+          gap: 24,
+          padding: 24,
+          width: "100%",
+          maxWidth: 960,
+          marginHorizontal: "auto",
+        }}
+      >
+        <Text style={{ fontSize: 30, marginBottom: 20 }}>{post.title}</Text>
+        <Markdown>{post.content}</Markdown>
+      </ScrollView>
+    </>
   );
 };
 

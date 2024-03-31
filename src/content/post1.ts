@@ -5,7 +5,7 @@ const post: Post = {
   date: '2024-02-28T13:27:28Z',
   title: 'My First Post',
   description: 'This is the first post in my app.',
-  thumbnail: '',
+  thumbnail: 'post1.jpeg',
   content: `# Parte carissime reddit
 
   ## Illa mundi tamen aut hoc sinistra passi
